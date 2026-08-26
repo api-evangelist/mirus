@@ -1,0 +1,13 @@
+generated: '2026-08-25'
+method: searched
+source: >-
+  Anonymous probes of https://rpm.mirusmed.com/api/* and a search of every reachable MiRus
+  public page for a documented limit.
+limit_count: 0
+rate_limits: []
+headers_observed: []
+note: >-
+  No rate limits are documented anywhere on MiRus's public surface, and none can be observed: the
+  GALILEO API answers 401 with a zero-length body and no RateLimit-*, X-RateLimit-* or
+  Retry-After header on any anonymous request. Recorded as an honest zero; NO `RateLimits`
+  pointer is wired, because there is no published runtime signal to point at.

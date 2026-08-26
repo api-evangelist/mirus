@@ -1,0 +1,67 @@
+generated: '2026-08-25'
+method: probed
+source: >-
+  Anonymous HTTP GET of each /.well-known/ path on every MiRus host discovered during contract
+  discovery (apex, www, and the GALILEO / Mirus Analytics application host).
+note: >-
+  Every probed path returned 404. No .well-known document is served on any MiRus host, so NO
+  WellKnown or SecurityTxt pointer is wired into apis.yml — this file records a measured absence,
+  not a presence. On rpm.mirusmed.com the 404 is served as the SPA index shell (3,225 bytes of
+  HTML), which is a miss either way.
+hosts:
+- host: mirusmed.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/apis.json
+    status: 404
+- host: www.mirusmed.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: rpm.mirusmed.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/oauth-protected-resource
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /.well-known/smart-configuration
+    status: 404

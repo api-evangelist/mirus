@@ -1,0 +1,63 @@
+generated: '2026-08-25'
+method: derived
+source: >-
+  https://rpm.mirusmed.com/js/app.d85d3fa1.js (the provider's own public, unauthenticated
+  JavaScript bundle) plus anonymous HTTP probes of https://rpm.mirusmed.com/api/*
+note: >-
+  MiRus publishes NO authentication documentation, no developer portal and no OpenAPI. This
+  profile is derived from the provider's public application bundle and from the challenge the
+  API itself returns to anonymous callers. Because nothing here is documented BY MiRus, no
+  `type: Authentication` pointer is wired into apis.yml — the artifact records what was
+  observed, it does not credit MiRus with publishing an auth reference.
+api: GALILEO RPM / "Mirus Analytics" application backend (not a published developer API)
+base: https://rpm.mirusmed.com
+schemes:
+- id: bearer_jwt
+  type: http
+  scheme: bearer
+  bearer_format: JWT
+  identity_provider: AWS Cognito
+  evidence: >-
+    The public app bundle contains `API_URL:"https://rpm.mirusmed.com"`, an axios
+    `baseURL="https://rpm.mirusmed.com"`, `Authorization`/`Bearer` header construction and two
+    `cognito` references. Every /api/* route answers `401` with `WWW-Authenticate: Bearer`.
+  documented_by_provider: false
+probes:
+- url: https://rpm.mirusmed.com/api/org
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/org/clinician
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/org/report
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/org/emrpush
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/org/insurance
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/org/compliance
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/admin/device
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/v1/fhir
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/api/v1/fhir/metadata
+  status: 401
+  www_authenticate: Bearer
+- url: https://rpm.mirusmed.com/.well-known/oauth-authorization-server
+  status: 404
+- url: https://rpm.mirusmed.com/.well-known/openid-configuration
+  status: 404
+- url: https://rpm.mirusmed.com/.well-known/smart-configuration
+  status: 404
+scopes:
+  documented: false
+  note: >-
+    No OAuth scope reference is published and no authorization-server metadata is served, so
+    scopes/ is deliberately not written rather than filled with a guess.

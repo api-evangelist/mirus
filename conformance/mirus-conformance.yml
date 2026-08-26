@@ -1,0 +1,59 @@
+generated: '2026-08-25'
+method: probed
+source: >-
+  Anonymous probes of https://rpm.mirusmed.com plus route names read from the provider's own
+  public JavaScript bundle https://rpm.mirusmed.com/js/app.d85d3fa1.js
+note: >-
+  MiRus publishes no OpenAPI, no conformance statement and no compliance page reachable to an
+  anonymous client, so every assertion below is either an observed absence or an observed but
+  UNVERIFIABLE signal. `conforms: false` here means "could not be established", never "was
+  tested and failed". No `Compliance` pointer is wired — no certification page was found.
+conformance:
+- id: fhir
+  conforms: false
+  status: unverified
+  standard: HL7 FHIR (version not determinable)
+  evidence: >-
+    A FHIR surface exists: the GALILEO application bundle routes to `/api/v1/fhir`, and
+    https://rpm.mirusmed.com/api/v1/fhir, /api/v1/fhir/Patient and /api/v1/fhir/metadata each
+    return 401 with `WWW-Authenticate: Bearer` (a 404 is returned for genuinely absent paths on
+    the same host, so the routes are real). The CapabilityStatement at /metadata is
+    authentication-gated, so the FHIR release and the supported resources cannot be read
+    anonymously and conformance cannot be asserted.
+  domain_standard: true
+  sector: healthcare
+- id: smart-on-fhir
+  conforms: false
+  status: absent
+  evidence: >-
+    /.well-known/smart-configuration returns 404 on rpm.mirusmed.com, and
+    /api/v1/fhir/.well-known/smart-configuration returns 401. No SMART launch metadata is
+    served anonymously.
+- id: oauth2
+  conforms: false
+  status: absent
+  evidence: >-
+    No /.well-known/oauth-authorization-server or /.well-known/oauth-protected-resource on any
+    MiRus host (404). The application authenticates with an AWS Cognito bearer JWT, but no
+    authorization-server metadata is published.
+- id: oidc
+  conforms: false
+  status: absent
+  evidence: /.well-known/openid-configuration returns 404 on mirusmed.com, www and rpm hosts.
+- id: rfc9457
+  conforms: false
+  status: unverified
+  evidence: >-
+    No error body is returned to anonymous callers (401 responses carry a zero-length body), and
+    no error reference is published, so the error envelope format is unknown.
+- id: rfc9116
+  conforms: false
+  status: absent
+  evidence: /.well-known/security.txt returns 404 on all three MiRus hosts.
+compliance:
+  published_certifications: []
+  note: >-
+    No trust center, SOC 2 / ISO 27001 / HIPAA attestation page or security program page was
+    found on any reachable MiRus surface. A FHIR + remote-patient-monitoring product in the US
+    is necessarily operating under HIPAA, but MiRus publishes no statement of it that an
+    anonymous reader can fetch, so nothing is asserted here.

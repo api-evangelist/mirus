@@ -64,5 +64,17 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-MiRus is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/mirus_stock/
+MiRus is a Marietta, Georgia life sciences company (founded 2015) that develops and commercializes
+implants and procedural solutions built on MoRe, its proprietary molybdenum-rhenium superalloy, for
+spine, orthopaedic and structural heart disease — plus GALILEO, a spine-focused surgical planning,
+intra-operative alignment measurement and remote physiologic monitoring platform.
+
+**API surface (measured 2026-08-25):** MiRus publishes no public API program — no developer portal,
+API reference, OpenAPI/AsyncAPI/GraphQL schema, SDK, MCP server, agent card or `/.well-known/`
+document on any of its hosts. It does operate one real API, but it is customer-only: the GALILEO /
+"Mirus Analytics" clinician application at `rpm.mirusmed.com` calls a backend under
+`rpm.mirusmed.com/api/` that includes a FHIR route at `/api/v1/fhir`; every route answers `401` with
+`WWW-Authenticate: Bearer` (AWS Cognito JWT) and no contract is published.
+
+- https://www.mirusmed.com/
+- https://forgeglobal.com/mirus_stock/ (secondary-market listing — the harvest source, not the company site)

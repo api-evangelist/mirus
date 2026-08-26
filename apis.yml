@@ -1,17 +1,37 @@
 aid: mirus
 name: MiRus
-description: 'MiRus is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  MiRus is a Marietta, Georgia life sciences company founded in 2015 that develops and
+  commercializes implants and procedural solutions built on MoRe, its proprietary
+  molybdenum-rhenium superalloy, for spine, orthopaedic and structural heart disease. Its
+  FDA-cleared portfolio spans the Europa pedicle screw system, CYGNUS MoRe anterior cervical
+  plating, 3DR printed interbody and corpectomy systems, the Atlas foot-and-ankle plating line,
+  and the Siegel transcatheter aortic valve, alongside GALILEO — a spine-focused surgical
+  planning, intra-operative alignment measurement and remote physiologic monitoring platform
+  delivered to clinicians as the "Mirus Analytics" web application at rpm.mirusmed.com. MiRus
+  publishes no public developer program: the GALILEO backend, which includes a FHIR route, is
+  bearer/Cognito authenticated and answers 401 on every path, and no OpenAPI, SDK, reference or
+  developer portal is published anywhere on its public surface.
+image: https://www.mirusmed.com/wp-content/uploads/2021/07/MiRus_mixed_with-metal-clipping-mask.png
 url: https://raw.githubusercontent.com/api-evangelist/mirus/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
+x-tier: profiled
+x-tier-reason: enrichment
 specificationVersion: '0.20'
 created: '2026-08-25'
 modified: '2026-08-25'
 tags:
 - Company
+- Medical Devices
+- Health Care
+- Life Sciences
+- Spine
+- Orthopaedics
+- Structural Heart
+- Remote Patient Monitoring
+- Medical Implants
+- Surgical Planning
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +39,48 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/mirus-domain-security.yml
 - type: Website
+  url: https://www.mirusmed.com/
+- type: Blog
+  url: https://www.mirusmed.com/news/
+- type: BlogRSS
+  url: https://www.mirusmed.com/feed/
+- type: Support
+  url: https://www.mirusmed.com/contact/
+- type: PrivacyPolicy
+  url: https://www.mirusmed.com/wp-content/uploads/2021/10/MiRus-Privacy-Policy.pdf
+- type: TermsOfService
+  url: https://www.mirusmed.com/wp-content/uploads/2021/10/MiRus-Terms-of-Use-Policy.pdf
+- type: SecondaryMarketListing
   url: https://forgeglobal.com/mirus_stock/
+- type: Conformance
+  url: conformance/mirus-conformance.yml
+- type: LLMsTxt
+  url: llms/mirus-llms.txt
+x-enrichment:
+  date: '2026-08-25'
+  status: minimal
+  artifacts_added: 7
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    Every route of the GALILEO / "Mirus Analytics" backend at rpm.mirusmed.com/api/ — including
+    its FHIR endpoint and the /api/v1/fhir/metadata CapabilityStatement — answers 401 with
+    WWW-Authenticate: Bearer to anonymous callers, and MiRus publishes no developer portal,
+    reference, OpenAPI, SDK or .well-known document anywhere else on its public surface.
+  evidence:
+  - url: https://rpm.mirusmed.com/api/v1/fhir
+    status: 401
+  - url: https://rpm.mirusmed.com/api/v1/fhir/metadata
+    status: 401
+  - url: https://rpm.mirusmed.com/api/openapi.json
+    status: 401
+  - url: https://www.mirusmed.com/.well-known/api-catalog
+    status: 404
+  - url: https://rpm.mirusmed.com/openapi.json
+    status: 404
+  checked: '2026-08-25'

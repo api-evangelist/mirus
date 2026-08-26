@@ -1,0 +1,29 @@
+generated: '2026-08-25'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.mirusmed.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 19 23:01:33 2026 GMT
+  hsts: null
+- host: rpm.mirusmed.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  2 23:59:59 2026 GMT
+  hsts: null
+  note: >-
+    GALILEO / "Mirus Analytics" clinician application (CloudFront + S3 SPA). Its /api/* routes,
+    including /api/v1/fhir, answer 401 to anonymous requests.
+domains:
+- domain: mirusmed.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+notes:
+- www.mirusmed.com completes a TLS handshake but silently drops anonymous HTTP requests for
+  dynamic (WordPress) paths — /, /contact/, /wp-json/ all time out with no bytes returned —
+  while static /wp-content/ assets on the same host return 200. Recorded as observed; not
+  treated as a dead host.

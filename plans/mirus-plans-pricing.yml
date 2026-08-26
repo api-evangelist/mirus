@@ -1,0 +1,13 @@
+generated: '2026-08-25'
+method: searched
+source: >-
+  https://www.mirusmed.com/ (site map enumerated from the public archive of mirusmed.com) and
+  https://forgeglobal.com/mirus_stock/
+plan_count: 0
+plans: []
+note: >-
+  MiRus publishes no plans, tiers or price list of any kind. It sells FDA-cleared implants and a
+  clinician-facing monitoring platform through a direct sales force and named distributors
+  (https://www.mirusmed.com/distributors/); the public site has no pricing page, and there is no
+  API product to price. Recorded as an honest zero, and NO `Pricing` or `Plans` pointer is wired
+  into apis.yml, because the underlying surface does not exist.
