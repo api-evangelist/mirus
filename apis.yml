@@ -12,6 +12,17 @@ description: >-
   publishes no public developer program: the GALILEO backend, which includes a FHIR route, is
   bearer/Cognito authenticated and answers 401 on every path, and no OpenAPI, SDK, reference or
   developer portal is published anywhere on its public surface.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.mirusmed.com/wp-content/uploads/2021/07/MiRus_mixed_with-metal-clipping-mask.png
 url: https://raw.githubusercontent.com/api-evangelist/mirus/refs/heads/main/apis.yml
 x-type: company
