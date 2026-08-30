@@ -1,0 +1,15 @@
+{
+  "repo": "mirus",
+  "feeds": [
+    {
+      "source": "https://www.mirusmed.com/",
+      "error": "TimeoutError"
+    },
+    {
+      "source": "https://www.mirusmed.com/news/",
+      "error": "TimeoutError"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-08-30T22:33:40Z"
+}
